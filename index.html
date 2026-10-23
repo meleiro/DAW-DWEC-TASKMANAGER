@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TaskFlow | Eventos JavaScript</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>TaskFlow</h1>
+        <p>Gestor de tareas · laboratorio de eventos</p>
+        <p id="pantalla"></p>
+    </header>
+    <main>
+        <section class="panel">
+            <h2>Nueva tarea</h2>
+            <form id="formulario"><label for="titulo">Título</label><input id="titulo" maxlength="80" required
+                    placeholder="Escribe una tarea"><small id="contador">0/80</small><label
+                    for="prioridad">Prioridad</label><select id="prioridad">
+                    <option value="media">Media</option>
+                    <option value="alta">Alta</option>
+                    <option value="baja">Baja</option>
+                </select><button type="submit">Añadir tarea</button><button type="reset"
+                    class="secundario">Limpiar</button></form>
+            <p id="mensaje" role="status" aria-live="polite"></p>
+        </section>
+        <section class="panel">
+            <h2>Buscar y filtrar</h2><label for="buscar">Buscar tarea (atajo /)</label><input id="buscar"
+                placeholder="Buscar por título"><label for="filtro">Filtrar por prioridad</label><select id="filtro">
+                <option value="todas">Todas</option>
+                <option value="alta">Alta</option>
+                <option value="media">Media</option>
+                <option value="baja">Baja</option>
+            </select>
+            <p id="estadisticas" role="status" aria-live="polite"></p>
+        </section>
+        <section class="panel ancho">
+            <h2>Tablero de tareas</h2>
+            <p>Usa los botones para cambiar el estado. Haz doble clic sobre el título para editarlo.</p>
+            <div id="tablero" class="tablero">
+                <div class="columna" data-estado="pendiente">
+                    <h3>Pendientes</h3>
+                    <div class="lista" id="pendiente"></div>
+                </div>
+                <div class="columna" data-estado="en-proceso">
+                    <h3>En proceso</h3>
+                    <div class="lista" id="en-proceso"></div>
+                </div>
+                <div class="columna" data-estado="completada">
+                    <h3>Completadas</h3>
+                    <div class="lista" id="completada"></div>
+                </div>
+            </div>
+        </section>
+        <section class="panel ancho">
+            <h2>Laboratorio de propagación</h2>
+            <p>Haz clic en el botón y observa el orden de los eventos.</p>
+            <div id="exterior" class="exterior">Contenedor exterior<div id="interior" class="interior">Contenedor
+                    interior <button id="objetivo" type="button">Objetivo</button></div>
+            </div><button id="limpiar-log" class="secundario">Limpiar registro</button>
+            <ol id="registro" aria-live="polite"></ol>
+        </section>
+        <section class="panel ancho">
+            <h2>Seguimiento temporal</h2><button id="activar">Activar seguimiento del puntero</button><button
+                id="desactivar" class="secundario" disabled>Desactivar seguimiento</button>
+            <p id="puntero">Seguimiento desactivado</p>
+            <p>Atajos: / buscar · N nueva tarea · Escape salir del campo</p>
+        </section>
+    </main>
+</body>
+
+</html>
