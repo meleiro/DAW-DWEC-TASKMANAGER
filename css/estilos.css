@@ -1,1 +1,169 @@
-:root{font-family:system-ui,sans-serif;color:#203047;background:#f3f6fb}*{box-sizing:border-box}body{margin:0}header{background:#263b75;color:white;padding:24px max(24px,calc((100% - 1150px)/2))}header h1{margin:0}main{max-width:1150px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.panel{background:white;border-radius:14px;padding:20px;box-shadow:0 3px 14px #1d305114}.ancho{grid-column:1/-1}label{display:block;margin:12px 0 5px;font-weight:600}input,select{width:100%;padding:11px;border:1px solid #b7c3d6;border-radius:8px;font:inherit}button{background:#3254b5;color:white;border:0;border-radius:8px;padding:9px 12px;margin:8px 6px 0 0;cursor:pointer;font:inherit}button:hover{background:#243e89}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ef9b32;outline-offset:2px}button:disabled{opacity:.5;cursor:not-allowed}.secundario{background:#64748b}.tablero{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.columna{background:#f1f4fb;border-radius:10px;padding:12px;min-height:170px}.tarea{background:white;border-left:5px solid #7183a0;border-radius:8px;padding:12px;margin:10px 0;box-shadow:0 2px 6px #0001;overflow-wrap:anywhere}.tarea[data-prioridad=alta]{border-left-color:#d44b4b}.tarea[data-prioridad=baja]{border-left-color:#3a9973}.tarea h4{margin:0 0 8px}.tarea button{font-size:.8rem;padding:7px}.exterior{padding:20px;background:#e1e9ff;border:2px solid #6476ae;border-radius:10px}.interior{padding:18px;margin-top:10px;background:#c4d5fc;border-radius:8px}#registro{max-height:220px;overflow:auto}#mensaje{min-height:24px;color:#285b3e}@media(max-width:750px){main{grid-template-columns:1fr}.tablero{grid-template-columns:1fr}}@media(prefers-reduced-motion:no-preference){button{transition:background .15s}}
+:root {
+    font-family: system-ui, sans-serif;
+    color: #203047;
+    background: #f3f6fb
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0
+}
+
+header {
+    background: #263b75;
+    color: white;
+    padding: 24px max(24px, calc((100% - 1150px)/2))
+}
+
+header h1 {
+    margin: 0
+}
+
+main {
+    max-width: 1150px;
+    margin: 24px auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px
+}
+
+.panel {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 3px 14px #1d305114
+}
+
+.ancho {
+    grid-column: 1/-1
+}
+
+label {
+    display: block;
+    margin: 12px 0 5px;
+    font-weight: 600
+}
+
+input,
+select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #b7c3d6;
+    border-radius: 8px;
+    font: inherit
+}
+
+button {
+    background: #3254b5;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 12px;
+    margin: 8px 6px 0 0;
+    cursor: pointer;
+    font: inherit
+}
+
+button:hover {
+    background: #243e89
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #ef9b32;
+    outline-offset: 2px
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed
+}
+
+.secundario {
+    background: #64748b
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px
+}
+
+.columna {
+    background: #f1f4fb;
+    border-radius: 10px;
+    padding: 12px;
+    min-height: 170px
+}
+
+.tarea {
+    background: white;
+    border-left: 5px solid #7183a0;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 10px 0;
+    box-shadow: 0 2px 6px #0001;
+    overflow-wrap: anywhere
+}
+
+.tarea[data-prioridad=alta] {
+    border-left-color: #d44b4b
+}
+
+.tarea[data-prioridad=baja] {
+    border-left-color: #3a9973
+}
+
+.tarea h4 {
+    margin: 0 0 8px
+}
+
+.tarea button {
+    font-size: .8rem;
+    padding: 7px
+}
+
+.exterior {
+    padding: 20px;
+    background: #e1e9ff;
+    border: 2px solid #6476ae;
+    border-radius: 10px
+}
+
+.interior {
+    padding: 18px;
+    margin-top: 10px;
+    background: #c4d5fc;
+    border-radius: 8px
+}
+
+#registro {
+    max-height: 220px;
+    overflow: auto
+}
+
+#mensaje {
+    min-height: 24px;
+    color: #285b3e
+}
+
+@media(max-width:750px) {
+    main {
+        grid-template-columns: 1fr
+    }
+
+    .tablero {
+        grid-template-columns: 1fr
+    }
+}
+
+@media(prefers-reduced-motion:no-preference) {
+    button {
+        transition: background .15s
+    }
+}
