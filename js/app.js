@@ -402,12 +402,84 @@ function notificarCambio() {
 
     detail: {
       total: total,
-      noCompletadas: tareasNoCompletadas
+      noCompletadas: tareasNoCompletadas.length
     }
 
 
      }  )    )
 }
+
+document.addEventListener('tareas:cambiadas', event => {
+
+    console.log('evento recibido: ', event.type);
+    console.log('detalles: ', event.detail);
+
+
+});
+
+function renderizar(){
+    for (const estado of estados){
+        $('#' + estado).replaceChildren();
+    }
+
+    const filtro = $('#filtro').value;
+
+    for (const tarea of tareas) {
+
+
+        if (
+
+            filtro !== 'todas'
+            && tarea.prioridad !== filtro
+
+        ) {
+            continue;
+        }
+
+        if (
+            !tarea.titulo
+               .toLocaleLowerCase()
+               .includes(busqueda)
+        ) {
+            continue;
+        }
+
+
+       const tarjeta = document.createElement('article');
+
+      
+
+       tarjeta.className= 'tarea';
+       // <article class="tarea"></article>
+       tarjeta.dataset.id = tarea.id;
+       tarjeta.dataset.prioridad = tarea.prioridad; 
+       // <article class="tarea" data-id="1" data-prioridad="media">
+       // <h4>Comprar mortadela</h4>
+       //</article>
+
+       const titulo = document.createElement('h4');
+       //<h4>Comprar mortadela</h4>
+       titulo.textContent = tarea.titulo;
+
+       tarjeta.append(titulo);
+       // <article class="tarea" data-id="1" data-prioridad="media">
+       // <h4>Comprar mortadela</h4>
+       //</article>
+
+       const detalle = document.createElement('small');
+       detalle.textContent = 'Prioridad: ' + tarea.prioridad;
+
+       tarjeta.append(detalle, document.createElement('br'));
+
+     
+
+
+
+
+    }
+
+}
+
 
 
 
