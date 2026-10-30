@@ -471,15 +471,79 @@ function renderizar(){
 
        tarjeta.append(detalle, document.createElement('br'));
 
-     
+       for (const [accion, texto] of [
+        ['anterior', '<- Anterior'],
+        ['siguiente', 'Siguiente ->'],
+        ['eliminar', 'Eliminar']    
+        
+       ]){
+        const boton = document.createElement('button');
+
+        boton.type = 'button';
+
+        boton.dataset.accion = accion;
+
+        boton.textContent = texto;
+
+      
+
+        const indice = estados.indexOf(tarea.estado);
+
+        boton.disabled = 
+           (accion === 'anterior' && indice === 0
+            || (accion ==='siguiente' && indice === 2)
+           );
+
+
+           tarjeta.append(boton);
+
+
+
+       }
+
+
+
+      $('#' + tarea.estado).append(tarjeta);
 
 
 
 
     }
-
+   notificarCambio();
 }
 
+$('#formulario').addEventListener('submit', event => {
+    event.preventDefault();
+
+    const titulo = $('#titulo').value.trim();
+
+    if (!titulo) {
+        avisar('Introduce un título válido');
+        $('#titulo').focus();
+        return;
+    }
+
+    tareas.push({
+        id: siguienteId++,
+        titulo,
+        prioridad: $('#prioridad').value,
+        estado: 'pendiente'
+    });
+
+    $('#formulario').reset();
+
+    $('#contador').textContent='0/80';
+
+    avisar('tarea añadida');
+
+    renderizar();
+
+    $('#titulo').focus();
 
 
 
+});
+
+
+
+renderizar();
