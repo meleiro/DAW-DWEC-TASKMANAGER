@@ -1852,6 +1852,73 @@ $('#tablero').addEventListener('click', event => {
 });
 
 
+$('#tablero').addEventListener('dblclick', event => {
+
+    const titulo = event.target.closest('.tarea h4');
+
+    if(!titulo || !$('#tablero').contains(titulo)) {
+        return;
+    }
+
+    const tarea = tareas.find(
+        t => t.id === Number(titulo.closest('.tarea').dataset.id
+    )
+    );
+
+
+    if(!tarea){
+        return;
+    }
+
+    const nuevo = prompt('Nuevo título: ', tarea.titulo);
+
+    if (nuevo === null || !nuevo.trim()) {
+        return;
+    }
+
+
+    tarea.titulo = nuevo.trim().slice(0,80);
+
+    renderizar();
+
+    avisar('Título actualizado');
+
+});
+
+document.addEventListener('keydown', event => {
+
+    if ( event.key === "Escape"  &&
+        document.activeElement.matches('input,select')
+     ) {
+        document.activeElement.blur();
+        return;
+     }
+
+     
+
+     if (event.key === '/'){
+        event.preventDefault();
+        $('#buscar').focus();
+     }
+
+    const editando = 
+          event.target.matches('input,textarea,select') ||
+          event.target.isContentEditable;
+
+    if ( editando ||
+           event.altKey ||
+           event.ctrlKey ||
+           event.metaKey
+     )     {
+        return;
+     }
+
+
+});
+
+
+
+
 // ============================================================
 // 12. INICIALIZACIÓN DE LA APLICACIÓN
 // ============================================================
