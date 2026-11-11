@@ -693,19 +693,9 @@ function notificarCambio() {
 
 document.addEventListener('tareas:cambiadas', event => {
 
-    console.log('Evento recibido:', event.type);
-
-    console.log('Detalles:', event.detail);
-
-    console.log(
-        'Total de tareas:',
-        event.detail.total
-    );
-
-    console.log(
-        'Tareas no completadas:',
-        event.detail.noCompletadas
-    );
+   $('#estadisticas').textContent = 
+      `Total: ${event.detail.total} - ` +
+      `Sin completar:  ${event.detail.noCompletadas}`;
 
 });
 
@@ -1913,6 +1903,30 @@ document.addEventListener('keydown', event => {
         return;
      }
 
+
+});
+
+$('#titulo').addEventListener('input', event => {
+    $('#contador').textContent = 
+        event.target.value.length + '/80';
+});
+
+$('#formulario').addEventListener('reset', () => {
+    $('#contador').textContent = '0/80';
+});
+
+$('#titulo').addEventListener('focus', () => {
+    avisar('Escribe un título y pulsa añadir');
+});
+
+$('#titulo').addEventListener('blur', () => {
+
+
+    if (!$('#titulo').value.trim()){
+        avisar('No puedes dejar le título vacío');
+    } else {
+       avisar('');
+    }
 
 });
 
