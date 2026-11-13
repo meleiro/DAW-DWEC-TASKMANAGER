@@ -1930,6 +1930,65 @@ $('#titulo').addEventListener('blur', () => {
 
 });
 
+function registrar(etiqueta){
+
+    return event => {
+
+        const li = document.createElement('li');
+
+        li.textContent = `${etiqueta} | ` +
+        `fase=${event.eventPhase} | ` + 
+        `target=${event.target.id} | ` +
+        `currentTarget=${event.currentTarget.id}  `;
+
+        $('#registro').prepend(li);
+    };
+}
+
+for (const id of ['exterior', 'interior', 'objetivo']){
+    const elemento = $('#' + id);
+
+    elemento.addEventListener(
+        'click',
+        registrar(id + ' Captura'),
+        { capture: true }
+    );
+
+    elemento.addEventListener(
+        'click',
+        registrar(id + ' Burbujeo')
+        
+    );
+
+}
+
+$('#limpiar-log').addEventListener('click', () => {
+    $('#registro').replaceChildren();
+});
+
+$('#activar').addEventListener('click', () => {
+
+    if (seguimiento) {
+        return;
+    }
+    seguimiento = new AbortController();
+
+    document.addEventListener( 'pointermove', 
+        throttle(event => {
+            $('#puntero').textContent = `Puntero: ${event.pointerType}` + 
+            ` x: ${event.clientX}` +
+            ` y: ${event.clientY}`; 
+        }, 200),
+        {
+            signal: seguimiento.signal,
+            passive: true
+        }
+    );
+
+    $('#activar').disabled = true;
+    $('#desactivar').disabled = false;
+
+});
 
 
 
